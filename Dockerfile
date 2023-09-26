@@ -1,6 +1,5 @@
 FROM node:13-alpine
 
-ARG MONGO_DB_PWD
 ENV MONGO_DB_USERNAME=admin
     MONGO_DB_PWD=password
 
