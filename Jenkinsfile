@@ -21,7 +21,7 @@ pipeline {
         stage('Building image') {
             steps {
                 script {
-                    dockerImage = naramelo/exammongo:v1.7
+                    dockerImage = "naramelo/exammongo:v1.7"
                 }
             }
         }
