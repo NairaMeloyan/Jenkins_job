@@ -26,12 +26,13 @@ pipeline {
             }
         }
 
-        stage("start container") {
+stage("start container") {
     steps {
         sh '/usr/bin/docker-compose up -d --no-color --wait'
         sh '/usr/bin/docker-compose ps'
     }
 }
+
 
         stage("run tests against container") {
             steps {
