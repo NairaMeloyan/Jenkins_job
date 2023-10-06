@@ -1,39 +1,35 @@
 pipeline {
     agent any
 
-#    environment {
-#        registry = "060787452196.dkr.ecr.eu-central-1.amazonaws.com/project"
- #   }
-   
+    // environment {
+    //     registry = "060787452196.dkr.ecr.eu-central-1.amazonaws.com/project"
+    // }
+
     stages {
-        
-    
-       
         stage("verity tooling") {
-            steps{
+            steps {
                 sh '''
-                  docker version
-                  docker info
-                  docker compose version
-                  curl --version
-                  jq --version
+                    docker version
+                    docker info
+                    docker compose version
+                    curl --version
+                    jq --version
                 '''
             }
         }
 
-         stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build registry
+        stage('Building image') {
+            steps {
+                script {
+                    dockerImage = naramelo/exammongo:v1.7
+                }
+            }
         }
-      }
-    }
 
         stage("start container") {
             steps {
                 sh 'docker compose up -d --no-color --wait'
                 sh 'docker compose ps'
-            
             }
         }
 
@@ -43,7 +39,4 @@ pipeline {
             }
         }
     }
-    
-    
 }
-
